@@ -25,11 +25,11 @@
 			var fragment = Math.random();
 
 			$iframe = DC('iframe');
-			$iframe.setAttribute('id','spe-iframe');
-			$iframe.setAttribute('src',DG('spe-js').getAttribute('data-home-url') + '#' + fragment);
+			$iframe.id = 'spe-iframe';
+			$iframe.src = DG('spe-js').getAttribute('data-home-url') + '#' + fragment;
 			
 			$container = DC('div');
-			$container.setAttribute('id','spe-container');
+			$container.id = 'spe-container';
 				
 			$title = DC('h3');
 			$title.setAttribute('id','spe-title');

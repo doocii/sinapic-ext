@@ -1,4 +1,4 @@
-<?php include dirname(__FILE__) . '/config.php';?>
+<?php include __DIR__ . '/config.php';?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,14 +10,14 @@
 	Add this link to your bookmark: <a href="javascript:(function(D,js,css,js_url,css_url,id){
 		if(D.getElementById(id + '-js')) return;
 		js = D.createElement('script');
-		js.setAttribute('id',id + '-js');
-		js.setAttribute('src',js_url);
+		js.id = id + '-js';
+		js.src = js_url;
 		js.setAttribute('data-home-url','<?php echo HOME_URL;?>');
 		D.getElementsByTagName('head')[0].appendChild(js);
 		
 		css = D.createElement('link');
 		css.rel = 'stylesheet';
-		css.setAttribute('id',id + '-css');
+		css.id = id + '-css';
 		css.href = css_url;
 		D.getElementsByTagName('head')[0].appendChild(css);
 		
@@ -25,6 +25,8 @@
 	</h1>
 	<h2>Just click the link from your bookmark when you upload images.</h2>
 	<h3><a href="http://ww3.sinaimg.cn/large/686ee05djw1eihtkzlg6mj216y16ydll.jpg" target="_blank" title="Donate by Alipay">支持开发者 - Donate me by Alipay (QR code)</a></h3>
-	<h4>By <a href="<?php echo DES_URL;?>" target="_blank" >INN STUDIO</a></h4>
+	<p>By <a href="<?php echo DES_URL;?>" target="_blank" >INN STUDIO</a></p>
+	<p>由<a href="http://www.bitee.org" target="_blank">“Bitee 比特网舟”</a>提供空间赞助</p>
+	
 </body>
 </html>

@@ -18,7 +18,7 @@
 		<div id="progress-bar"></div>
 	</div>
 	<div id="files-container"></div>
-	
+	<p class="thanks">由<a href="http://www.bitee.org" target="_blank">“Bitee 比特网舟”</a>提供空间赞助</p>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
