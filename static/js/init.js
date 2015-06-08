@@ -348,7 +348,7 @@
 				basename = file_obj[len - 1],
 				old_size = file_obj[len - 2],
 				hostname = img_url.substr(0,img_url.indexOf(old_size));
-				hostname = hostname.replace('http://','https://');
+				hostname = hostname.replace('https://','http://');
 				url = hostname + size + '/' + basename;
 			return url;
 		}

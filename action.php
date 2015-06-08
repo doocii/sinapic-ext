@@ -163,7 +163,8 @@ class spe{
 		 */
 		if(is_array($callback) && isset($callback['bmiddle_pic'])){
 			$output['status'] = 'success';
-			$output['img_url'] = str_ireplace('http://','https://',$callback['bmiddle_pic']);
+			$output['img_url'] = $callback['bmiddle_pic'];
+			//$output['img_url'] = str_ireplace('http://','https://',$callback['bmiddle_pic']);
 			/** 
 			 * destroy after upload 
 			 */
