@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title>SinaPic-Ext (屌图床-扩展版)</title>
 	<link rel="stylesheet" href="static/css/style.css?v=<?php echo VERSION;?>"/>
-	<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.1.min.js"></script>
+	
 	<script src="static/js/init.js?v=<?php echo VERSION;?>"></script>
 </head>
 <body>
@@ -15,10 +15,10 @@
 	</form>
 	<div id="progress">
 		<div id="upload-tip" class="page-tip"><div class="alert alert-info" role="alert">Loading, please wait...</div></div>
-		<div id="progress-bar"></div>
+		<progress id="progress-bar" value="11" max="100"></progress>
 	</div>
 	<div id="files-container"></div>
-	<p class="thanks">由<a href="http://www.bitee.org" target="_blank">“Bitee 比特网舟”</a>提供空间赞助</p>
+	<p class="thanks">由<a href="http://blog.sxbk.pw/" target="_blank">“PS 折腾笔记”</a>提供空间赞助</p>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

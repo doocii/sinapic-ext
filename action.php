@@ -9,7 +9,7 @@ class spe{
 	public static function init(){
 
 		$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
-		
+		header('Content-Type: application/json');
 		switch($action){
 			//check-auth
 			case 'check-auth':
