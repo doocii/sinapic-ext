@@ -1,6 +1,6 @@
 <?php
-include dirname(__FILE__) . '/config.php';
-include dirname(__FILE__) . '/inc/saetv2.ex.class.php';
+include __DIR__ . '/config.php';
+include __DIR__ . '/inc/saetv2.ex.class.php';
 
 spe::init();
 class spe{
@@ -9,7 +9,10 @@ class spe{
 	public static function init(){
 
 		$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
-		header('Content-Type: application/json');
+		
+		if($action !== 'set-auth')
+			header('Content-Type: application/json');
+			
 		switch($action){
 			//check-auth
 			case 'check-auth':
@@ -54,9 +57,9 @@ class spe{
 <body>
 	<h1>Redirecting...</h1>
 	<form id="fm" action="https://shenghuo.alipay.com/send/payment/fill.htm" method="post">
-		<input type="hidden" name="optEmail" value="<?php echo $email;?>">
-		<input type="hidden" name="payAmount" value="<?php echo (int)$price;?>">
-		<input type="hidden" name="title" value="<?php echo $item_title;?>">
+		<input type="hidden" name="optEmail" value="<?= $email;?>">
+		<input type="hidden" name="payAmount" value="<?= (int)$price;?>">
+		<input type="hidden" name="title" value="<?= $item_title;?>">
 		<input type="submit">
 	</form>
 </body>
@@ -109,10 +112,10 @@ class spe{
 		die(json_encode($output));
 	}
 	private static function action_upload(){
-		$file = isset($_FILES['file']) ? $_FILES['file'] : array();
+		$file = isset($_FILES['file']) ? $_FILES['file'] : [];
 		// var_dump($file);exit;
 		$file_name = isset($file['name']) ? $file['name'] : null;
-		$file_type = isset($file['type']) ? explode('/',$file['type']) : array(); /** fuck you php 5.3 */
+		$file_type = isset($file['type']) ? explode('/',$file['type']) : [];
 		$file_type = !empty($file_type) ? $file_type[1] : null;
 		$tmp_name = isset($file['tmp_name']) ? $file['tmp_name'] : null;
 		/** 
@@ -151,9 +154,9 @@ class spe{
 			$output['msg'] = 'Please use your Sina Weibo account to authorize the plugin.';
 			die(json_encode($output));
 		}
-		include dirname(__FILE__) . '/inc/saetv2.ex.class.php';
+		include __DIR__ . '/inc/saetv2.ex.class.php';
 
-		$c = new SaeTClientV2(AKEY,SKEY,self::get_token_form_cookie());
+		$c = new sinapicext\inc\SaeTClientV2(AKEY,SKEY,self::get_token_form_cookie());
 		$callback = $c->upload(date('Y-m-d H:i:s ' . rand(100,999)) . ' Upload by SinapicExt',$tmp_name);
 		
 		unlink($tmp_name);
@@ -193,7 +196,7 @@ class spe{
 		die(json_encode($output));
 	}
 	private static function get_cb_url(){
-		$uri = HOME_URL . '/action.php?action=set-auth';
+		$uri = $CONFIG['HOME_URL'] . '/action.php?action=set-auth';
 		return 'http://api.inn-studio.com/sinapicv2/?action=get_authorize&amp;uri=' . urlencode($uri);
 	}
 	private static function set_token($token,$expire = 604800){

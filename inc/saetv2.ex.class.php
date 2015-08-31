@@ -1,20 +1,18 @@
 <?php
+namespace sinapicext\inc;
 /**
  * PHP SDK for weibo.com (using OAuth2)
  * 
  * @author Elmer Zhang <freeboy6716@gmail.com>
  */
-if(!class_exists('OAuthException')){
 /**
  * @ignore
  */
-class OAuthException extends Exception {
+class OAuthException extends \Exception {
 	// pass
 }
-}
 
 
-if(!class_exists('SaeTOAuthV2')){
 /**
  * 新浪微博 OAuth 认证类(OAuth2)
  *
@@ -64,13 +62,13 @@ class SaeTOAuthV2 {
 	 *
 	 * @ignore
 	 */
-	public $timeout = 30;
+	public $timeout = 300;
 	/**
 	 * Set connect timeout.
 	 *
 	 * @ignore
 	 */
-	public $connecttimeout = 30;
+	public $connecttimeout = 300;
 	/**
 	 * Verify SSL Cert.
 	 *
@@ -353,7 +351,7 @@ class SaeTOAuthV2 {
 		curl_setopt($ci, CURLOPT_USERAGENT, $this->useragent);
 		curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, $this->connecttimeout);
 		curl_setopt($ci, CURLOPT_TIMEOUT, $this->timeout);
-		curl_setopt($ci, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($ci, CURLOPT_RETURNTRANSFER, false);
 		curl_setopt($ci, CURLOPT_ENCODING, "");
 		curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, $this->ssl_verifypeer);
 		if (version_compare(phpversion(), '5.4.0', '<')) {
@@ -397,7 +395,11 @@ class SaeTOAuthV2 {
 		curl_setopt($ci, CURLOPT_HTTPHEADER, $headers );
 		curl_setopt($ci, CURLINFO_HEADER_OUT, TRUE );
 
-		$response = curl_exec($ci);
+		ob_start();
+		curl_exec($ci);
+		$response = ob_get_contents();
+		ob_end_clean();
+		
 		$this->http_code = curl_getinfo($ci, CURLINFO_HTTP_CODE);
 		$this->http_info = array_merge($this->http_info, curl_getinfo($ci));
 		$this->url = $url;
@@ -474,10 +476,7 @@ class SaeTOAuthV2 {
 		return $multipartbody;
 	}
 }
-}
 
-
-if(!class_exists('SaeTClientV2')){
 /**
  * 新浪微博操作类V2
  *
@@ -3295,8 +3294,5 @@ class SaeTClientV2
 			$id = trim($id);
 		}
 	}
-
-}
-
 
 }
