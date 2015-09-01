@@ -196,7 +196,7 @@ class spe{
 		die(json_encode($output));
 	}
 	private static function get_cb_url(){
-		$uri = $CONFIG['HOME_URL'] . '/action.php?action=set-auth';
+		$uri = get_config()['HOME_URL'] . '/action.php?action=set-auth';
 		return 'http://api.inn-studio.com/sinapicv2/?action=get_authorize&amp;uri=' . urlencode($uri);
 	}
 	private static function set_token($token,$expire = 604800){

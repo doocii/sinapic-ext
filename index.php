@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SinaPic-Ext (屌图床-扩展版)</title>
-	<link rel="stylesheet" href="static/css/style.css?v=<?= $CONFIG['VERSION'];?>"/>
+	<link rel="stylesheet" href="static/css/style.css?v=<?= get_config()['VERSION'];?>"/>
 	
 </head>
 <body>
@@ -18,7 +18,7 @@
 	</div>
 	<div id="files-container"></div>
 	<p class="thanks">由<a href="http://blog.sxbk.pw/" target="_blank">“VPS 折腾笔记”</a>提供空间赞助</p>
-<script src="static/js/init.js?v=<?= $CONFIG['VERSION'];?>" async></script>
+<script src="static/js/init.js?v=<?= get_config()['VERSION'];?>" async></script>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
