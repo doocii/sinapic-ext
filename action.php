@@ -154,9 +154,8 @@ class spe{
 			$output['msg'] = 'Please use your Sina Weibo account to authorize the plugin.';
 			die(json_encode($output));
 		}
-		include __DIR__ . '/inc/saetv2.ex.class.php';
 
-		$c = new sinapicext\inc\SaeTClientV2(AKEY,SKEY,self::get_token_form_cookie());
+		$c = new sinapicext\inc\SaeTClientV2(get_config()['AKEY'],get_config()['SKEY'],self::get_token_form_cookie());
 		$callback = $c->upload(date('Y-m-d H:i:s ' . rand(100,999)) . ' Upload by SinapicExt',$tmp_name);
 		
 		unlink($tmp_name);
