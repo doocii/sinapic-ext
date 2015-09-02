@@ -17,7 +17,7 @@
 		<progress id="progress-bar" value="11" max="100"></progress>
 	</div>
 	<div id="files-container"></div>
-	<p class="thanks">由<a href="http://blog.sxbk.pw/" target="_blank">“VPS 折腾笔记”</a>提供空间赞助</p>
+	<p class="thanks">由<a href="http://inn-studio.com/" target="_blank">由“INN 超级主机”</a>提供空间赞助</p>
 <script src="static/js/init.js?v=<?= get_config()['VERSION'];?>" async></script>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
